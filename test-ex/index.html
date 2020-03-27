@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
     <div class="wrap">
         <header>
@@ -24,7 +27,7 @@
                     <li><a href="#">contact us</a></li>
                 </ul>
             </nav>
-            
+
         </header>
         <section class="visual">
             <div class="copy">
@@ -85,5 +88,29 @@
             <p>copyright &copy; All rights reserved.</p>
         </footer>
     </div>
+    <script>
+        const menu = document.querySelector(".menu");
+        const nav = document.querySelector("header nav");
+        const header = document.querySelector("header");
+        const visual = document.querySelector(".visual");
+        menu.addEventListener("click", function () {
+            nav.classList.add("active");
+            this.style.zIndex = "1000000";
+            visual.style.transform = "scale(0.9)";
+        });
+        nav.addEventListener("click", function () {
+            this.classList.remove("active");
+            visual.style.transform = "scale(1)"
+        });
+        window.addEventListener("scroll", function () {
+            if (window.scrollY != 0) {
+                header.classList.add("active");
+            } else {
+                header.classList.remove("active");
+            }
+
+        });
+    </script>
 </body>
+
 </html>
