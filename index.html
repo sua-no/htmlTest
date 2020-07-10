@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grade{
+            font-size: 3vw;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="score"><input type="text" placeholder="점수를 입력하세요"><button type="button">입력</button></div>
+    <p class="grade"></p>
+    <script>
+        const score = document.querySelector(".score input");
+        const submit = document.querySelector(".score button");
+        const grade = document.querySelector('.grade');
+
+        submit.addEventListener('click',function(){
+            gradeResult(score.value);
+        })
+
+        function gradeResult(value){
+            grade.innerText = '';
+            
+            let pm = value%10;
+
+            if(value == 100){
+                grade.innerText = '+A';
+                return;
+            }else if(60 <= value ){
+                if(0 <= pm && pm <= 2){
+                    grade.innerText = '-';
+                }else if(8 <= pm && pm <= 9 && value == 100){
+                    grade.innerText = '+';
+                }
+            }
+
+            if(90 <= value && value <= 100){
+                grade.innerText += 'A';
+            }else if(80 <= value && value <= 89){
+                grade.innerText += 'B';
+            }else if(70 <= value && value <= 79){
+                grade.innerText += 'C';
+            }else if(60 <= value && value <= 69){
+                grade.innerText += 'D';
+            }else if(0 <= value && value <= 59){
+                grade.innerText += 'F';
+            }else{
+                grade.innerText = 'INVALID SCORE';
+            }
+            
+        }
+    </script>
+</body>
+</html>
