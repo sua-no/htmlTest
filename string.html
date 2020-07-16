@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let output  = countAllCharacters('');
+
+        function countAllCharacters(string){
+            let answer = {}, keyArr = []; //keyArr은 원래 글자와 비교하기위해 key만 담은 배열
+            const arr = string.split(''); //매개변수로 받은 문자를 쪼개서 배열로 바꿈(keyArr과 비교하기 위해)
+
+            for(let i in string){answer[string[i]] = 0;}; //answer에 키:0으로 객체 생성
+            keyArr = Object.keys(answer); //key 넣음
+
+            for(let i in keyArr){ //반복문으로 keyArr과 arr비교
+                let count = 0;
+                for(let j in arr){
+                    if(keyArr[i] === arr[j]){ //같은 글자일 때 count(값)증가
+                        count++;
+                        answer[keyArr[i]] = count;                        
+                    }
+                }
+            }
+            return answer;
+        }
+        console.log(output);
+
+    </script>
+</body>
+</html>
